@@ -81,6 +81,7 @@ Cau6
 				System.out.println("so tien vnd cua ban sang usd la " + sum2);	
 			}else {
 			System.out.println("so tien vnd cua ban sang usd la " + sum);
+                        }
 			
 
 }
