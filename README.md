@@ -33,7 +33,7 @@ public class Eternitymain {
 			int x = 8;
 			double sum = soA * x;
 			double giatri = Math.pow(sum, m); 
-			System.out.println("Vay don thuc P(x) =" + giatri);  	
+			System.out.println("Vay don thuc P(x) = " + giatri);  	
 	
 //Cau3
 			Scanner scanner = new Scanner (System.in);
