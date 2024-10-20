@@ -1,0 +1,23 @@
+package eternity_class;
+
+import java.util.Scanner;
+
+public class Eternitymain {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+
+      Scanner scanner = new Scanner (System.in);
+			System.out.println("nhap hai so nguyen m va n");
+			int m = scanner.nextInt();
+			int n = scanner.nextInt();
+			if (m < n) {
+				System.out.println("so nguyen lon nhat la " + n);
+			}else {
+				System.out.println("so nguyen lon nhat la " + m);
+			}
+
+}
+}
