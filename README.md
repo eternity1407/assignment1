@@ -1,5 +1,4 @@
 /* # assignment1
-de 1
 */
 
 package eternity_class;
@@ -48,7 +47,7 @@ public class Eternitymain {
 			System.out.println( "tong hai ky so cua n la " + sum);
                         }
 
-Cau4
+//Cau4
 			Scanner scanner = new Scanner (System.in);
 			System.out.println("vui long nhap 5 chu so khac nhau"); 
 			double A = scanner.nextDouble();
@@ -60,14 +59,14 @@ Cau4
 			int n = 5;
 			double bientichluy = (double) sum / n;
 			System.out.println("gia tri trung binh cua 5 chu so ban vua nhap la " + bientichluy);
-Cau5
+//Cau5
 			Scanner scanner = new Scanner (System.in);
 			System.out.println("vui long nhap gia tri do C");
 			double celsius = scanner.nextDouble();
 			double fahrenheit = (double) (celsius * 1.8) + 32;
 			System.out.println("gia tri do C ban vua nhap sang do F la " + fahrenheit + "°F");
 
-Cau6
+//Cau6
 			Scanner scanner = new Scanner (System.in);
 			System.out.println("vui long nhap so tien vnd");
 			int vnd = scanner.nextInt();
