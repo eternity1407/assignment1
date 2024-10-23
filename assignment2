@@ -8,7 +8,7 @@ public class Eternitymain {
 	 */
 	public static void main(String[] args) {
 
-
+//cau1
       Scanner scanner = new Scanner (System.in);
 			System.out.println("nhap hai so nguyen m va n");
 			int m = scanner.nextInt();
@@ -18,6 +18,42 @@ public class Eternitymain {
 			}else {
 				System.out.println("so nguyen lon nhat la " + m);
 			}
+//cau2 + 3
+		Scanner scanner = new Scanner (System.in);
+		System.out.println("nhap ba so nguyen m n p");
+		int m = scanner.nextInt();
+		int n = scanner.nextInt();
+		int p = scanner.nextInt();
+		int largestnum = Math.max(m, Math.max(n, p));
+		int smallestnum = Math.min(m, Math.min(n, p));
+		if (m == largestnum && p == smallestnum) {
+			System.out.println( "thu tu tang dan (1), thu tu giam dan (2)" );
+			int a = scanner.nextInt();
+			if ( a == 1) {
+				System.out.println(p + " " + n + " " + m);				
+			}else{
+				System.out.println(m + " " + n + " " + p);
+			}
+		}
+		if (n == largestnum && m == smallestnum) {
+			System.out.println( "thu tu tang dan (1), thu tu giam dan (2)" );
+			int a = scanner.nextInt();
+			if ( a == 1) {
+				System.out.println(m + " " + p + " " + n);				
+			}else{
+				System.out.println(n + " " + p + " " + m);
+			}
+		}else{
+				System.out.println( "thu tu tang dan (1), thu tu giam dan (2)" );
+				int a = scanner.nextInt();
+				if ( a == 1) {
+					System.out.println(n + " " + m + " " + p);				
+				}else {
+					System.out.println(p + " " + m + " " + n);
+				}
+			}
+//cau4
+
 
 }
 }
