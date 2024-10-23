@@ -85,7 +85,31 @@ public class Eternitymain {
 		}
 
 //Cau5
-
-
+		Scanner scanner = new Scanner (System.in);
+		System.out.println("xin chao, ai dang su dung may vay");
+		char tennguoidung;
+		while(true) {
+			tennguoidung = scanner.next().charAt(0);
+		switch (tennguoidung) {
+		case 'B':
+			System.out.println("chao bo");
+			break;
+		case 'H':
+			System.out.println("chao me");
+			break;
+		case 'A':
+			System.out.println("chao anh trai");
+			break;
+		case 'E':
+			System.out.println("chao em gai");
+			break;
+		default:
+			System.out.println("vui long nhap dung 4 ki tu B H A E") ;
+			break;		
+		}
+		if ( tennguoidung == 'B' || tennguoidung == 'H' || tennguoidung == 'A' || tennguoidung == 'E') {
+		}
+		}
+		
 }
 }
