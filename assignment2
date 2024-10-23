@@ -53,6 +53,38 @@ public class Eternitymain {
 				}
 			}
 //cau4
+		Scanner scanner = new Scanner (System.in);
+		System.out.println("vui long nhap so nguyen hai chu so");
+		int n;
+		while(true) {
+			n = scanner.nextInt();
+			if( n < 10 || n > 99 ) {
+				System.out.println("vui long nhap so nguyen hai chu so");
+			}else {
+		int a = n / 10;
+		int b = n % 10;
+		String[] sodon = new String[10];
+		sodon[1] = "mot";
+		sodon[2] = "hai";
+		sodon[3] = "ba";
+		sodon[4] = "bon";
+		sodon[5] = "nam";
+		sodon[6] = "sau";
+		sodon[7] = "bay";
+		sodon[8] = "tam";
+		sodon[9] = "chin";
+		sodon[0] = " ";
+		if ( n >= 10 && n < 20) {
+			 System.out.println("muoi "+ sodon[n - 10]);
+		}else if( b == 0) {
+			System.out.println(sodon[a] + " muoi");
+		}else {
+			System.out.println(sodon[a] + " " + sodon[b]);
+		}
+		}
+		}
+
+//Cau5
 
 
 }
