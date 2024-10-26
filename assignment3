@@ -1,1 +1,72 @@
+package eternity_class;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Eternitymain {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+
+//cau1
+//while	
+		int a = 0;
+		int b = 1;
+		while (a < 100 ) {
+			System.out.println("so chan " + a);
+			a +=2;
+		}
+		while (b < 100) {
+			System.out.println("so le " + b);
+			b +=2;
+		}
+//for
+		for (int a = 0; a < 100; a +=2) {
+			System.out.println("so chan " + a);
+		}
+		for (int b = 1; b < 100; b +=2) {
+			System.out.println("so le " + b);
+		}
+
+//cau2
+//for
+		Scanner scanner = new Scanner (System.in);
+		System.out.println("vui long so luong chu so ban muon nhap"); 
+		int b = scanner.nextInt();
+		int sum = 0;
+		for (int a = 1; a <= b; a +=2) {
+			sum +=a;
+		}
+		System.out.println("tong cac chu so chan tu 1 den " + b + " la " + sum);
+//while
+		Scanner scanner = new Scanner (System.in);
+		System.out.println("vui long so luong chu so ban muon nhap"); 
+		int b = scanner.nextInt();
+		int a = 1;
+		int sum = 0;
+		while( a <= b) {
+			sum += a;
+			a +=2;
+		}
+		System.out.println("tong cac chu so chan tu 1 den " + b + " la "+ sum);
+
+//cau3
+//for
+		int b = 0;
+		for (int  a = 0;a <= 1000; a +=3) {
+			b++;
+		}
+		System.out.println("co " + b + " chu so chia het cho 3 tu 1 den 1000"); 
+//while
+		int b = 0;
+		int a = 0;
+		while (a < 1000) {
+			a += 3;
+			b ++;
+		}
+		System.out.println("co " + b + " chu so chia het cho 3 tu 1 den 1000");
+
 
