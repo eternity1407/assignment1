@@ -20,6 +20,6 @@ public class Eternitymain {
 			sum += number;
 		if ( number <= 0) {
 			int sum2 = sum - danhSach.get(a);
-			System.out.println("Tong cac so vua nhap la: " + sum2);
+			System.out.println("tong cac so duong vua nhap la: " + sum2);
 		}
 		}
