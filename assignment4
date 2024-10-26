@@ -10,16 +10,14 @@ public class Eternitymain {
 	 */
 	public static void main(String[] args) {
 
-    Scanner scanner = new Scanner (System.in);
-		List<Integer> danhSach = new ArrayList<Integer>();
+		Scanner scanner = new Scanner (System.in);
 		System.out.println("vui long nhap cac so > 0 (chuong trinh se dung khi nhap so <= 0)");
 		int sum = 0;
 		for (int a = 0;a < 999999 ;a ++) {
 			int number = scanner.nextInt();
-			danhSach.add(number);
-			sum += number;
 		if ( number <= 0) {
-			int sum2 = sum - danhSach.get(a);
-			System.out.println("tong cac so duong vua nhap la: " + sum2);
+			break;
 		}
+		sum = sum + number;
 		}
+		System.out.println("tong cac so duong vua nhap la: " + sum);
