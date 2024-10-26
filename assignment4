@@ -1,1 +1,25 @@
+package eternity_class;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Eternitymain {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+    Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+		System.out.println("vui long nhap cac so > 0 (chuong trinh se dung khi nhap so <= 0)");
+		int sum = 0;
+		for (int a = 0;a < 999999 ;a ++) {
+			int number = scanner.nextInt();
+			danhSach.add(number);
+			sum += number;
+		if ( number <= 0) {
+			int sum2 = sum - danhSach.get(a);
+			System.out.println("Tong cac so vua nhap la: " + sum2);
+		}
+		}
