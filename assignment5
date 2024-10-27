@@ -10,11 +10,11 @@
 		int minnum = danhSach.get(0);
 		int maxnum = danhSach.get(0);
 		int vitri = 0;
-	  int vitri2 = 0;
-	  int vitri3 = 0;
-	  int sum = 0;
-	  int sum2 = 0;	    
-	  for (int a = 0; a < danhSach.size(); a++) {	    
+	    int vitri2 = 0;
+	    int vitri3 = 0;
+	    int sum = 0;
+	    int sum2 = 0;	    
+	    for (int a = 0; a < danhSach.size(); a++) {	    
 	    	if ( danhSach.get(a) > maxnum) {
 	    		maxnum = danhSach.get(a);
 	    		vitri = a;
@@ -25,7 +25,7 @@
 	    		sum2 += danhSach.get(a);
 	    		vitri3++;
 	    	}
-	    	if ( danhSach.get(a) % 2 == 0 && danhSach.get(a) > 0) {
+	    	if ( danhSach.get(a) % 2 >= 0) {
 	    		sum += danhSach.get(a);
 	    	}
 	    }
