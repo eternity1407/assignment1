@@ -1,1 +1,38 @@
+public class Eternitymain {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
 
+		Scanner scanner = new Scanner (System.in);
+		System.out.println("vui long mot so nguyen");
+		while (true) {
+			int number = scanner.nextInt();
+			if (number > 0) {
+				System.out.println("day la so duong");
+			}else {
+				System.out.println("day la so am");
+			}
+			if (number % 2 == 0) {
+				System.out.println("day la so chan");
+			}else {
+				System.out.println("day la so le");
+			}
+			while (true) {
+				for (int b = 2; b < 7; b ++) {
+					if ( number <= 0) {
+						System.out.println("day khong phai la so nguyen to");
+						break;
+					}else if ( (number % b) == 0 && number != b /*neu chia cho chinh no du 0*/ ) {
+					System.out.println("day khong phai la so nguyen to");
+					break;
+		            }else {
+		    			System.out.println("day la so nguyen to");
+		    			break;
+		            }
+				}
+				break;
+			}
+		}
+	}
+}
