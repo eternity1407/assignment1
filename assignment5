@@ -1,4 +1,10 @@
-		Scanner scanner = new Scanner (System.in);
+public class Eternitymain {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+                Scanner scanner = new Scanner (System.in);
 		List<Integer> danhSach = new ArrayList<Integer>();
 		System.out.println("vui long so luong du lieu");
 		int size = scanner.nextInt();
@@ -7,47 +13,51 @@
 			System.out.println("vui long vi tri thu " + a);
 			danhSach.add(scanner.nextInt());
 		}
-		int minnum = danhSach.get(0);
+		int firstmin = danhSach.get(0);
+		int maxminnum = danhSach.get(0);
 		int maxnum = danhSach.get(0);
+		int vitri0 = 0;
 		int vitri = 0;
 	    int vitri2 = 0;
 	    int vitri3 = 0;
 	    int sum = 0;
 	    int sum2 = 0;	    
 	    for (int a = 0; a < danhSach.size(); a++) {	    
+
+	    	if ( danhSach.get(a) < 0) {
+	    		firstmin = maxminnum = danhSach.get(a);
+	    		vitri0 = a - 1;
+	    		vitri2 = a;
+	    		sum2 += danhSach.get(a);
+	    		vitri3 ++;
+	    	}
 	    	if ( danhSach.get(a) > maxnum) {
 	    		maxnum = danhSach.get(a);
 	    		vitri = a;
 	    	}
-	    	if ( danhSach.get(a) < 0) {
-	    		minnum = danhSach.get(a);
-	    		vitri2 = a;
-	    		sum2 += danhSach.get(a);
-	    		vitri3++;
-	    	}
-	    	if ( danhSach.get(a) % 2 >= 0) {
+	    	if ( danhSach.get(a) % 2 == 0 ) {
 	    		sum += danhSach.get(a);
 	    	}
 	    }
-	    for (int a = 0; a < danhSach.size(); a++) {
-    	if ( danhSach.get(a) < 0) {
-    		System.out.println("so am dau tien trong danh sach la " +  danhSach.get(a) + " o vi tri " + a);
-    		break;
-    	}
-	    }
+	    System.out.println("so am dau tien trong danh sach la " +  firstmin + " o vi tri " + vitri0);
 	    System.out.println("so lon nhat trong danh sach la " + maxnum + " o vi tri " + vitri);	    	    
-	    System.out.println("so am lon nhat trong danh sach la " + minnum + " o vi tri " + vitri2);
+	    System.out.println("so am lon nhat trong danh sach la " + maxminnum + " o vi tri " + vitri2);
 	    System.out.println("tong cac so chan trong danh sach la " + sum);
     	System.out.println("co " + vitri3 + " so am");
 	    System.out.println("tong cac so am trong danh sach la " + sum2);
     	System.out.println("vui long nhap x");
-	    int x = scanner.nextInt();
-	    for (int a = 0; a < danhSach.size(); a++) {
+    	while(true) {
+    	int x = scanner.nextInt();
+    	int a;
+	    for (a = 0; a < danhSach.size(); a++) {
 	    	if ( danhSach.get(a) == x) {
-	    		System.out.println("x co trong danh sach nam o vi tri " + a);
-	    		break;
-	    	}else {
-	    		System.out.println("x cua ban khong nam trong danh sach");
+	    		System.out.println("x cua ban nam trong danh sach o vi tri " + a);
 	    		break;
 	    	}
 	    }
+	    if ( a == size) {
+	    System.out.println("x cua ban khong nam trong danh sach");
+	    }
+    	}
+}
+}
