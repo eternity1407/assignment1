@@ -4,6 +4,7 @@ public class Eternitymain {
 	 */
 	public static void main(String[] args) {
 
+//cau1
 		Scanner scanner = new Scanner (System.in);
 		System.out.println("vui long mot so nguyen");
 		while (true) {
@@ -34,5 +35,32 @@ public class Eternitymain {
 				break;
 			}
 		}
+//cau2
+		Scanner scanner = new Scanner (System.in);
+		List<String> danhSach = new ArrayList<String>();
+		System.out.println("vui long mot so nguyen");
+		int num = scanner.nextInt();
+		danhSach.add("khong");
+		danhSach.add("mot");
+		danhSach.add("hai");
+		danhSach.add("ba");
+		danhSach.add("bon");
+		danhSach.add("nam");
+		danhSach.add("sau");
+		danhSach.add("bay");
+		danhSach.add("tam");
+		danhSach.add("chin");
+		danhSach.add("muoi");
+		if (num > 10 || num < 1) {
+			System.out.println("vui long nhap so tu 1 den 10");
+		}
+		for (int a = 0;a < 11;a ++) {
+			if ( a == num ) {
+				System.out.println(danhSach.get(a));
+				break;
+			}
+		}
+//cau3
+
 	}
 }
