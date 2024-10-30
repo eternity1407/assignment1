@@ -61,6 +61,18 @@ public class Eternitymain {
 			}
 		}
 //cau3
-
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+		System.out.println("vui long mot so nguyen (nhan 0 neu ban muon dung va tinh tong)");
+		int sum = 0;
+		while (true) {
+			int num = scanner.nextInt();
+			if (num == 0) {
+				System.out.println(sum);
+				break;
+			}
+            danhSach.add(num);
+            sum += num;
+		}
 	}
 }
