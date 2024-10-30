@@ -63,16 +63,84 @@ public class Eternitymain {
 //cau3
 		Scanner scanner = new Scanner (System.in);
 		List<Integer> danhSach = new ArrayList<Integer>();
-		System.out.println("vui long mot so nguyen (nhan 0 neu ban muon dung va tinh tong)");
+		System.out.println("vui long mot so nguyen n");
+		int size = scanner.nextInt();
 		int sum = 0;
-		while (true) {
-			int num = scanner.nextInt();
-			if (num == 0) {
-				System.out.println(sum);
-				break;
+		for (int a = 0;a < size;a ++) {
+			danhSach.add(a);
+			if ( danhSach.get(a) % 2 == 0) {
+				sum += danhSach.get(a);
 			}
-            danhSach.add(num);
-            sum += num;
+		}
+		System.out.println("tong cac so chan tu 0 den n la " + sum);
+//cau4
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+		System.out.println("vui long n so nguyen");
+		int n = scanner.nextInt();
+		int sum = 0;
+                System.out.println("nhap cac gia tri cua day so nay : ");
+		for (int a = 0; a < n; a ++) {
+			danhSach.add(scanner.nextInt());
+			sum += danhSach.get(a);
+		}
+		double trungbinh = (double) sum / n;
+		System.out.println("gia tri trung binh cua day so la " + trungbinh);
+
+//cau5
+
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+        System.out.println("vui long nhap so luong phan tu");
+        int n = scanner.nextInt();
+        System.out.println("vui long nhap gia tri");
+        for (int i = 0; i < n; i++) {
+            danhSach.add(scanner.nextInt());
+        }
+        int min = danhSach.get(0);
+        int max = danhSach.get(0);
+        for (int num : danhSach) {
+            if (num < min) {
+                min = num;
+            }
+            if (num > max) {
+                max = num;
+            }
+        }
+        System.out.println("so lon nhat : " + max);
+        System.out.println("so nho nhat: " + min);
+//cau6
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+		System.out.println("vui long nhap chieu rong");
+		int rong = scanner.nextInt();
+		int chuvi = rong + rong;
+		int dientich = rong*4;
+		System.out.println("chu vi va dien tich lan luot la " + chuvi + " " + dientich);
+//cau7
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+		System.out.println("vui long so luong du lieu");
+		int size = scanner.nextInt();
+		for (int a = 0;a < size; a ++) {
+			System.out.println("du lieu " + (a + 1) + " ");
+			danhSach.add(scanner.nextInt());
+		}
+		System.out.println("mang vua nhap la : " + danhSach);
+//cau8
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> danhSach = new ArrayList<Integer>();
+		System.out.println("vui long so luong du lieu");
+		int size = scanner.nextInt();
+		System.out.println("vui long nhap du lieu");
+		int a;
+		for ( a = 0;a < size;a ++) {
+			danhSach.add(scanner.nextInt());
+		}
+		for ( a = 0;a < size;a ++) {
+		if ( danhSach.get(a) % 2 == 0) {
+			System.out.println("phan tu la so chan : " + danhSach.get(a));
+		}
 		}
 	}
 }
