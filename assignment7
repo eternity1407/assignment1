@@ -52,7 +52,59 @@ public class baitap {
 		for (int i = 0; i < 3; i ++ ) {
 			num.add(scanner.nextInt());
 		}
-		System.out.println(timSoLonNhat(num.get(0),num.get(1) , num.get(2)));
+		System.out.println(timSoLonNhat(num.get(0), num.get(1) , num.get(2)));
 	}
 
 //Cau4
+    public static int cong(int a, int b) {
+    	int tong = a + b;
+        return tong;
+    }
+    public static int tru(int a, int b) {
+    	int hieu = a - b;
+        return hieu;
+    }
+    public static int nhan(int a, int b) {
+    	int tich = a*b;
+        return tich;
+    }
+    public static int chia(int a, int b) {
+        if (b == 0) {
+            System.out.println("ERROR : khong the chia cho 0");
+            return 0 ;
+        }
+        int thuong = a / b;
+        return thuong;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("vui long nhap 2 chu so nguyen khac khong");
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+        System.out.println("xuat thong bao");
+        System.out.println("1 : (+)");
+        System.out.println("2 : (-)");
+        System.out.println("3 : (*)");
+        System.out.println("4 : (/)");
+        while(true) {
+        int kq = scanner.nextInt();
+        switch (kq) {
+            case 1:
+                System.out.println("ket qua : " + cong(num1, num2));
+                break;
+            case 2:
+                System.out.println("ket qua : " + tru(num1, num2));
+                break;
+            case 3:
+                System.out.println("ket qua : " + nhan(num1, num2));
+                break;
+            case 4:
+                System.out.println("ket qua : " + chia(num1, num2));
+                break;
+            default:
+                System.out.println("vui long nhap 1 2 3 4 de thuc hien phep tinh");
+                break;
+        }
+        }
+    }
