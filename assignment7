@@ -1,0 +1,58 @@
+//cau1
+
+public class baitap {
+	public static int timSoLonNhat(int soA, int soB, int soC) {
+	int soLonNhat = soA;
+	if (soB > soA) {
+		soLonNhat = soB;
+		if (soC > soB) {
+			soLonNhat = soC;
+		}
+	}
+	return soLonNhat;	
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		int A = scanner.nextInt();
+		int B = scanner.nextInt();
+		int C = scanner.nextInt();
+		System.out.println(timSoLonNhat(A, B, C));
+	}
+
+//cau2
+	public static String timKieuSo(int soA) {
+		String kieuSo;
+		if (soA % 2 == 0) {
+			kieuSo = "chan";
+		}
+		else {
+			kieuSo = "le";
+		}
+		return kieuSo;
+	}
+
+	
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		int A = scanner.nextInt();
+		System.out.println("so ban vua nhap :" + A + " la so " + timKieuSo(A));
+	}
+
+//cau3
+public class baitap {
+	public static int timSoLonNhat(int soA, int soB, int soC) {
+		int sum = soA + soB + soC;
+	return sum;	
+	}
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner (System.in);
+		List<Integer> num = new ArrayList<Integer>();
+		for (int i = 0; i < 3; i ++ ) {
+			num.add(scanner.nextInt());
+		}
+		System.out.println(timSoLonNhat(num.get(0),num.get(1) , num.get(2)));
+	}
+
+//Cau4
