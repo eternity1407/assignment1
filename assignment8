@@ -5,18 +5,17 @@ public class Baitapchinh {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner (System.in);
 		System.out.println("vui long nhap diem Hoa Ly Toan theo thu tu : (lam on dung nhap diem vo ly em luoi fix logic code lam :(()");
-		int dHoa = scanner.nextInt();
-		int dLy = scanner.nextInt();
-		int dToan = scanner.nextInt();
+		double dHoa = scanner.nextInt();
+		double dLy = scanner.nextInt();
+		double dToan = scanner.nextInt();
 		ThongtinSV sinhvien = new ThongtinSV(dHoa, dLy, dToan);
 
 //class doituong
 public class ThongtinSV {
 	String ten;
-	int maSV;
-	int dToan;
-	int dLy;
-	int dHoa;
+	double dToan;
+        double dLy;
+	double dHoa;
 	public ThongtinSV(int hoa, int ly, int toan) {
 		this.dHoa = hoa;
 		this.dLy = ly;
