@@ -1,4 +1,4 @@
-//cau1 (co 2 cach nhung em chon dang ham de nhanh hon)
+//cau1 
 //class chinh
 public class Baitapchinh {
 
@@ -31,3 +31,152 @@ public class ThongtinSV {
 	        dtb = "kha";
 	    }
 		System.out.println("xin chuc minh ban xep loai: " + dtb);
+//cau2
+package baitap;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class baitapchinh {
+	public static void main(String[] args) {
+		
+		QuanlySV sinhvien = new QuanlySV();
+		sinhvien.duLieuSv();
+		System.out.println(" ");
+		sinhvien.thongTinTatCaSinhVien();
+		System.out.println(" ");
+		sinhvien.DTBcaonhat();
+		System.out.println(" ");
+		sinhvien.SVyeu();
+		System.out.println("nhap ten de tim thong tin  ");
+    	Scanner scanner = new Scanner (System.in);
+		sinhvien.timtenSV(scanner.next());
+		System.out.println(" ");
+		System.out.println("nhap maSv de tim thong tin  ");
+    	Scanner scanner1 = new Scanner (System.in);
+		sinhvien.timmaSV(scanner1.nextInt());
+		System.out.println(" ");
+		System.out.println("nhap maSv ban muon xoa  ");
+    	Scanner scanner2 = new Scanner (System.in);
+		sinhvien.xoamaSv(scanner1.nextInt());
+		
+	}
+}
+package baitap;
+
+public class ThongtinSV {
+	String ten;
+	int maSv;
+	int dLy;
+	int dHoa;
+	int dToan;
+	
+	
+	public ThongtinSV(String ten, int maSv, int Ly, int Hoa, int Toan) {
+		this.ten = ten;
+		this.maSv = maSv;
+		this.dLy = Ly;
+		this.dHoa = Hoa;
+		this.dToan = Toan;
+	}
+	public double dtb() {
+		double average = (dToan + dLy + dHoa) / 3;
+		return average;
+	}
+	public String xeploai() {
+		double sum = dLy + dHoa + dToan;
+		double average = sum / 3;
+		String xeploai = "yeu";
+	    if(average >= 9){
+	    	xeploai = "xuat sac";
+	    }else if (average >= 8){
+	    	xeploai = "gioi";
+	    }else if (average >= 7){
+	    	xeploai = "kha";
+	    }
+	    return xeploai;
+	}
+    public String ten() {
+        return ten;
+    }
+
+    public int maSv() {
+        return maSv;
+    }
+
+    void thongTinSinhVien() {
+        System.out.println(ten + " (" + maSv + ") " + dtb() + " " + xeploai());
+    }
+}
+package baitap;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class QuanlySV {
+
+	List<ThongtinSV> danhSach;
+    public QuanlySV() {
+        this.danhSach = new ArrayList<>();
+    }
+	void duLieuSv() {
+		themSinhVien(new ThongtinSV("Eternity", 222, 9, 9, 9));
+		themSinhVien(new ThongtinSV("Calamity", 333, 8, 8, 8));
+		themSinhVien(new ThongtinSV("Melody", 111, 6, 6, 6));
+	}
+
+	void themSinhVien(ThongtinSV sinhVien) {
+		danhSach.add(sinhVien);
+	}
+    void thongTinTatCaSinhVien() {
+        for (ThongtinSV sinhVien : danhSach) {
+            sinhVien.thongTinSinhVien();
+        }
+    }
+    
+    void DTBcaonhat() {
+    	ThongtinSV topSV = danhSach.get(0);
+        for (ThongtinSV sinhvien : danhSach) {
+            if (sinhvien.dtb() > topSV.dtb()) {
+            	topSV = sinhvien;
+            }
+        }
+        System.out.println("sinh vien co dtb cao nhat la : "); 
+        topSV.thongTinSinhVien();
+    }
+    void SVyeu() {
+        for (ThongtinSV sinhvien : danhSach) {
+           if ( sinhvien.xeploai() == "yeu") {
+               System.out.println("sinh vien xep loai yeu la : "); 
+               sinhvien.thongTinSinhVien();
+        }
+        }
+    }
+    void timtenSV(String ten) {
+        for (ThongtinSV sinhvien : danhSach) {
+        	if (sinhvien.ten().equals(ten)) {
+               System.out.println("thong tin sinh vien la : "); 
+               sinhvien.thongTinSinhVien();
+        	}
+        }
+    }
+
+    void timmaSV(int maSv) {
+        for (ThongtinSV sinhvien : danhSach) {
+        	if (sinhvien.maSv() == maSv) {
+               System.out.println("thong tin sinh vien la : "); 
+               sinhvien.thongTinSinhVien();
+        	}
+        }
+    }
+    void xoamaSv(int maSv) {
+        for (int i = 0; i < danhSach.size(); i ++) {
+        	if (danhSach.get(i).maSv == maSv) {
+        		danhSach.remove(i);
+        		System.out.println("ma sinh vien " + maSv + " da duoc xoa");
+        	}
+        }
+    }
+}
