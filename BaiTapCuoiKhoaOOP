@@ -347,7 +347,7 @@ public class main {
                     congty.TruongPhongNhieuNhanVienNhat();
                     break;
                 case 3:
-                    congty.xuatThongTin();
+                    congty.thuNhapCuaGiamDoc();
                     break;
                 case 4:
                     System.out.println("Tong thu nhap: " + congty.tongThuNhap());
