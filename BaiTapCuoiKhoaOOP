@@ -1,1 +1,401 @@
+package baitapcuoikhoa;
+
+abstract class ThongTinChung {
+    private String id;
+    private String name;
+    private String sdt;
+    private int songaylamviec;
+    protected double luong1ngay;
+
+    public ThongTinChung(String id, String name, String sdt, int songaylamviec, double luong1ngay) {
+        this.id = id;
+        this.name = name;
+        this.sdt = sdt;
+        this.songaylamviec = songaylamviec;
+        this.luong1ngay = luong1ngay;
+    }
+
+    public String getSdt() {
+		return sdt;
+	}
+
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getSongaylamviec() {
+		return songaylamviec;
+	}
+
+	public void setSongaylamviec(int songaylamviec) {
+		this.songaylamviec = songaylamviec;
+	}
+
+	public double getLuong1ngay() {
+		return luong1ngay;
+	}
+
+	public void setLuong1ngay(double luong1ngay) {
+		this.luong1ngay = luong1ngay;
+	}
+
+	public abstract double luong1thang();
+	public abstract double getCoPhan();
+    public void xuatThuNhapCuaGiamDoc(double loiNhuanCongTy) {
+	}
+    public int getSoLuongNhanVienDuoiQuyen() {
+        return 0;
+    }
+
+}
+
+package baitapcuoikhoa;
+
+class NhanVien extends ThongTinChung {
+    public NhanVien(String id, String name, String sdt, int songaylamviec) {
+        super(id, name, sdt, songaylamviec, 100);
+    }
+
+    @Override
+    public double luong1thang() {
+        return getLuong1ngay() * getSongaylamviec();
+    }
+
+	@Override
+	public double getCoPhan() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
+
+package baitapcuoikhoa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class TruongPhong extends ThongTinChung {
+    private int nhanVienDuoiQuyen;
+    private List<NhanVien> nhanVien;
+
+    public TruongPhong(String id, String name, String sdt, int songaylamviec) {
+    	super(id, name, sdt, songaylamviec, 200);
+        this.nhanVienDuoiQuyen = 0;  
+        this.nhanVien = new ArrayList<>();
+    }
+
+    public int getNhanVienDuoiQuyen() {
+		return nhanVienDuoiQuyen;
+	}
+
+	public void setNhanVienDuoiQuyen(int nhanVienDuoiQuyen) {
+		this.nhanVienDuoiQuyen = nhanVienDuoiQuyen;
+	}
+
+	@Override
+    public double luong1thang() {
+        return super.getLuong1ngay() * getSongaylamviec() + 100 * nhanVienDuoiQuyen;
+    }
+    public void themNhanVien() {
+        this.nhanVienDuoiQuyen++;
+    }
+
+	@Override
+	public double getCoPhan() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+    public void themNhanVien(NhanVien nhanvien) {
+        this.nhanVien.add(nhanvien);
+        this.nhanVienDuoiQuyen++;
+    }
+    public List<NhanVien> getSubordinates() {
+        return this.nhanVien;
+    }
+}
+
+package baitapcuoikhoa;
+
+class GiamDoc extends ThongTinChung {
+    private double coPhan;
+
+    public GiamDoc(String id, String name, String sdt, int songaylamviec, double coPhan) {
+        super(id, name, sdt, songaylamviec, 300);
+        this.coPhan = coPhan;
+    }
+
+    public double getCoPhan() {
+        return coPhan;
+    }
+
+    @Override
+    public double luong1thang() {
+        return getLuong1ngay() * getSongaylamviec();
+    }
+
+    public double bonus(double loiNhuanCongTy) {
+        return (coPhan / 100) * loiNhuanCongTy;
+    }
+    @Override
+    public void xuatThuNhapCuaGiamDoc(double loiNhuanCongTy) {
+        double tongThuNhap = luong1thang() + (coPhan / 100) * loiNhuanCongTy;
+        System.out.println("Giam doc: " + getName() + ", co tong thu nhap: " + tongThuNhap);
+    }
+}
+
+package baitapcuoikhoa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class CongTy {
+    private String name;
+    private String masothue;
+    private double doanhThuThang;
+    private List<ThongTinChung> danhSachNhanVien;
+
+    public CongTy(String name, String masothue, double doanhThuThang) {
+        this.name = name;
+        this.masothue = masothue;
+        this.doanhThuThang = doanhThuThang;
+        this.danhSachNhanVien = new ArrayList<>();
+    }
+
+    public void addNhanVien(ThongTinChung nhanvien) {
+    	danhSachNhanVien.add(nhanvien);
+    }
+
+    public void removeNhanVien(String id) {
+        for (int i = 0; i < danhSachNhanVien.size(); i++) {
+            if (danhSachNhanVien.get(i).getId().equals(id)) {
+            	danhSachNhanVien.remove(i);
+                break;
+            }
+        }
+    }
+
+    public double loiNhuan() {
+        double tongThuNhap = tongThuNhap();
+        return (doanhThuThang - tongThuNhap);
+    }
+    public double tongThuNhap() {
+        double total = 0;
+        for (ThongTinChung nhanvien : danhSachNhanVien) {
+            total += nhanvien.luong1thang();
+        }
+        return total;
+    }
+    public void TruongPhongNhieuNhanVienNhat() {
+        TruongPhong maxTruongPhong = null;
+        int maxNhanVien = -1;
+        for (ThongTinChung nhanvien : danhSachNhanVien) {
+            int numnhanvien = nhanvien.getSoLuongNhanVienDuoiQuyen();
+            if (numnhanvien > maxNhanVien) {
+            	maxNhanVien = numnhanvien;
+            	maxTruongPhong = (TruongPhong) nhanvien;
+            }
+        }
+        if (maxTruongPhong != null) {
+            System.out.println("Truong phong kiem soat nhieu nhan vien nhat: " + maxTruongPhong.getName() + " voi " + maxNhanVien + " nhan vien.");
+        } else {
+            System.out.println("Khong tim thay truong phong.");
+        }
+    }
+
+//bubble sort
+    public void sapXepTheoTen() {
+        for (int i = 0; i < danhSachNhanVien.size() - 1; i++) {
+            for (int a = 0; a < danhSachNhanVien.size() - 1 - i; a++) {
+                if (danhSachNhanVien.get(a).getName().compareTo(danhSachNhanVien.get(a + 1).getName()) > 0) {
+                	ThongTinChung nhanvien = danhSachNhanVien.get(a);
+                	danhSachNhanVien.set(a, danhSachNhanVien.get(a + 1));
+                    danhSachNhanVien.set(a + 1, nhanvien);
+                }
+            }
+        }
+    }
+
+    public void sapXepTheoMucLuong() {
+        for (int i = 0; i < danhSachNhanVien.size() - 1; i++) {
+            for (int a = 0; a < danhSachNhanVien.size() - 1 - i; a++) {
+            	if (danhSachNhanVien.get(a).luong1thang() < danhSachNhanVien.get(a + 1).luong1thang()) {
+                	ThongTinChung nhanvien = danhSachNhanVien.get(a);
+                	danhSachNhanVien.set(a, danhSachNhanVien.get(a + 1));
+                    danhSachNhanVien.set(a + 1, nhanvien);
+                }
+            }
+        }
+    }
+    public GiamDoc coDongLonNhat() {
+        GiamDoc coDongLonNhat = null;
+        double maxShares = 0;
+
+        for (ThongTinChung nhanvien : danhSachNhanVien) {
+            double sharePercentage = nhanvien.getCoPhan();
+            if (sharePercentage > maxShares) {
+            	coDongLonNhat = (GiamDoc) nhanvien;
+                maxShares = sharePercentage;
+            }
+        }
+        return coDongLonNhat;
+    }
+    public void thuNhapCuaNVthuongCaoNhat() {
+    	ThongTinChung thuNhapCuaNVthuongCaoNhat = null;
+        double thuNhapCaoNhat = 0;
+    	for (ThongTinChung nhanvien : danhSachNhanVien) {
+    		double thuNhap = nhanvien.luong1thang();
+            if (thuNhap < 9000) { //giam doc khong the nao co thu nhap duoi 9k (do ko bao h nghi)
+                if (thuNhap > thuNhapCaoNhat) {
+                	thuNhapCaoNhat = thuNhap;
+                	thuNhapCuaNVthuongCaoNhat = nhanvien;
+                }
+            }
+        }
+        if (thuNhapCuaNVthuongCaoNhat != null) {
+            System.out.println("nhan vien voi thu nhap cao nhat: " + thuNhapCuaNVthuongCaoNhat.getName() + ", voi muc thu nhap: " + thuNhapCuaNVthuongCaoNhat.luong1thang() +" 1 thang");
+        } else {
+            System.out.println("khong co nhan vien nao co thu nhap cao nhat.");
+        }
+    }
+    
+    public void thuNhapCuaGiamDoc() {
+        for (ThongTinChung nhanvien : danhSachNhanVien) {
+            nhanvien.xuatThuNhapCuaGiamDoc(loiNhuan());
+        }
+    }
+    public void xuatThongTin() {
+    	for (ThongTinChung nhanvien : danhSachNhanVien) {
+            System.out.println("ID: " + nhanvien.getId() + ", Name: " + nhanvien.getName() + ", SDT: " + nhanvien.getSdt() + ", 1 thang duoc: " + nhanvien.luong1thang());
+        }
+    }
+}
+
+package baitapcuoikhoa;
+
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args) {
+        CongTy congty = new CongTy("Eternity corp", "123456789", 50000);
+
+        ThongTinChung N1 = new NhanVien("N1", "Nguyen Van A", "1234", 29);
+        ThongTinChung N2 = new NhanVien("N2", "Nguyen Van B", "5678", 21);
+        TruongPhong T1 = new TruongPhong("T1", "Nguyen Van C", "9345", 15);
+        GiamDoc G1 = new GiamDoc("G1", "Nguyen Van D", "6783", 31, 40);
+        GiamDoc G2 = new GiamDoc("G2", "Nguyen Van E", "6793", 31, 50);
+        GiamDoc G3 = new GiamDoc("G3", "Nguyen Van F", "5433", 31, 10);
+
+        congty.addNhanVien(N1);
+        congty.addNhanVien(N2);
+        congty.addNhanVien(T1);
+        congty.addNhanVien(G1);
+        congty.addNhanVien(G2);
+        congty.addNhanVien(G3);
+        //thong tin cong ty co san de khoi nhap
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+        int choice;
+            System.out.println("---------- MENU -------------------------------------------");
+            System.out.println("1. Phan bo nhan vien vao truong phong");
+            System.out.println("2. Truong phong co so luong nhan vien duoi quyen nhieu nhat");
+            System.out.println("3. Xuat thong tin toan bo cong ty");
+            System.out.println("4. Xuat tong luong toan bo cong ty");
+            System.out.println("5. Sap xep nhan vien toan cong ty theo thu tu abc");
+            System.out.println("6. Sap xep nhan vien toan cong ty theo thu tu luong giam dan");
+            System.out.println("7. Tim co dong lon nhat");
+            System.out.println("8. Xuat tong thu nhap cua tung giam doc");
+            System.out.println("9. tim nhan vien thuong co luong cao nhat");
+            System.out.println("10.Xoa mot thong tin nhan su");
+            System.out.println("11.Them mot thong tin nhan su");
+            System.out.println("0. Thoat");
+            System.out.print("Vui long nhap: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Nhap so luong nhan vien vao truong phong " + T1.getName() + ": ");
+                    int numberOfSubordinates = scanner.nextInt();
+                    scanner.nextLine();
+                    for (int i = 0; i < numberOfSubordinates; i++) {
+                        System.out.println("Nhap nhan vien " + (i + 1) + " voi thong tin (ID, Name, SDT, so ngay lam viec cua thang truoc): ");
+                        String id = scanner.nextLine();
+                        String name = scanner.nextLine();
+                        String sdt = scanner.nextLine();
+                        int songaylamviec = scanner.nextInt();
+                        scanner.nextLine();
+                        NhanVien nhanvien = new NhanVien(id, name, sdt, songaylamviec);
+                        T1.themNhanVien(nhanvien);
+                    }
+                    break;
+                case 2:
+                    congty.TruongPhongNhieuNhanVienNhat();
+                    break;
+                case 3:
+                    congty.xuatThongTin();
+                    break;
+                case 4:
+                    System.out.println("Tong thu nhap: " + congty.tongThuNhap());
+                    break;
+                case 5:
+                    congty.sapXepTheoTen();
+                    System.out.println("Sap xep theo thu tu alphabet:");
+                    congty.xuatThongTin();
+                    break;
+                case 6:
+                    congty.sapXepTheoMucLuong();
+                    System.out.println("Sap xep theo thu tu luong:");
+                    congty.xuatThongTin();
+                    break;
+                case 7:
+                    GiamDoc coDongLonNhat = congty.coDongLonNhat();
+                    System.out.println("Co dong lon nhat la: " + coDongLonNhat.getName() + ", giu " + coDongLonNhat.getCoPhan() + "% co phan.");
+                    break;
+                case 8:
+                    congty.thuNhapCuaGiamDoc();
+                    break;
+                case 9:
+                    congty.thuNhapCuaNVthuongCaoNhat();
+                    break;
+                case 10:
+                	System.out.println("Nhap ID ban muon xoa");
+                	String ID = scanner.next();
+                    congty.removeNhanVien(ID);
+                    break;
+                case 11:
+                    System.out.println("Nhap thong tin chi tiet ve (ID, Name, SDT, so ngay lam viec(trong thang tiep theo)): ");
+                    String id = scanner.nextLine();
+                    String name = scanner.nextLine();
+                    String sdt = scanner.nextLine();
+                    int songaylamviec = scanner.nextInt();
+                    scanner.nextLine();
+                    NhanVien newNhanVien = new NhanVien(id, name, sdt, songaylamviec);
+                    congty.addNhanVien(newNhanVien);
+                    System.out.println("Chuc mung nhan vien moi");
+                    break;
+                case 0:
+                    System.out.println("Thoat.");
+                    break;
+
+                default:
+                    System.out.println("Yeu cau khong hop le, vui long nhap lai.");
+            }
+        }
+    }
+}
 
